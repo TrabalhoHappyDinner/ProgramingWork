@@ -1,0 +1,129 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+
+public class TelaPrincipal extends JFrame{
+	
+	private JMenuBar jmbBarra;
+	private JMenu jMenu;
+	private JMenuItem jmItem1;
+	private JMenuItem jmItem2;
+	private JMenuItem jmItem3;
+	private JMenuItem jmItem4;
+	
+	private JLabel lblLoguin;
+	private JTextField fieldLoguinName;
+	
+	private JLabel lblSenha;
+	private JTextField fieldSenha;
+	
+	private JButton bntOK;
+	
+	public TelaPrincipal(){
+		
+		this.setLayout(null);
+		
+		this.setTitle("HappyDinner");
+		this.setSize(getMaximumSize());
+		this.setLocationRelativeTo(null);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	
+		jmItem1 = new JMenuItem("adicionar usuário");
+		jmItem2 = new JMenuItem("remover usuário");
+		jmItem3 = new JMenuItem("checar usuários");
+		jmItem4 = new JMenuItem("adicionar moderador");
+	
+		jmItem1.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent evt){
+	                UsuarioAdd tf = new UsuarioAdd();
+	                tf.setVisible(true);
+	                tf.setSize(getMaximumSize());
+			  }
+		});
+		jmItem2.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent evt){
+	                UsuarioAdd tf = new UsuarioAdd();
+	                tf.setVisible(true);
+	                tf.setSize(getMaximumSize());
+			  }
+		});
+		jmItem3.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent evt){
+	                UsuarioAdd tf = new UsuarioAdd();
+	                tf.setVisible(true);
+	                tf.setSize(getMaximumSize());
+			  }
+		});
+		jmItem4.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent evt){
+	                UsuarioAdd tf = new UsuarioAdd();
+	                tf.setVisible(true);
+	                tf.setSize(getMaximumSize());
+			  }
+		});
+
+    jMenu = new JMenu("configurações");
+    jMenu.setForeground(Color.white);
+    jMenu.add(jmItem1);
+    jMenu.add(jmItem2);
+    jMenu.add(jmItem3);
+    jMenu.add(jmItem4);
+    
+    lblLoguin = new JLabel("Usuário: ");		// nome do usuário já cadastrado
+    fieldLoguinName = new JTextField(110);		
+    
+    lblSenha = new JLabel("Senha: ");
+    fieldSenha = new JTextField(110);			// senha do usuário acima
+    
+    bntOK = new JButton("Acessar"); 		// botão para checar loguin e acessar tela do restaurante
+    
+    this.add(lblLoguin);
+    lblLoguin.setFont(new Font("Serif", Font.BOLD, 26));
+    lblLoguin.setBounds(70, 50, 200, 30);
+    this.add(fieldLoguinName);
+    fieldLoguinName.setFont(new Font("Serif", Font.BOLD, 26));
+    fieldLoguinName.setBounds(250, 50, 380, 40);
+    
+    this.add(lblSenha);
+    lblSenha.setFont(new Font("Serif", Font.BOLD, 26));
+    lblSenha.setBounds(70, 150, 200, 30);
+    
+    this.add(fieldSenha);
+    fieldSenha.setFont(new Font("Serif", Font.BOLD, 26));
+    fieldSenha.setBounds(250, 150, 380, 40);
+    
+    this.add(bntOK);
+    bntOK.setFont(new Font("Serif", Font.BOLD, 26));
+    bntOK.setBounds(250, 250, 380, 40);
+    
+    bntOK.addActionListener(new ActionListener(){
+		  public void actionPerformed(ActionEvent evt){
+              telaRestaurante tf = new telaRestaurante(fieldLoguinName.getText(), fieldSenha.getText());
+             tf.setVisible(true);
+             JOptionPane.showMessageDialog(null, "LOGADO COM SUCESSO");
+             tf.setSize(getMaximumSize());
+             fieldLoguinName.setText("");
+             fieldSenha.setText("");
+		  }
+	});
+    
+    jmbBarra = new JMenuBar();
+    jmbBarra.add(jMenu);
+    this.setJMenuBar(jmbBarra);
+    jmbBarra.setBackground(Color.black);
+    
+	}
+}
