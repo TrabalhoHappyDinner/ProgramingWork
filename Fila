@@ -1,0 +1,57 @@
+
+
+import java.util.ArrayList;
+
+public class Fila {
+
+	private int fimDaFila;
+	private ArrayList<Object> elementos;
+	
+	public Fila(){
+		this.fimDaFila = -1;
+		this.elementos = new ArrayList<Object>();
+	}
+	public boolean isEmpty(){
+		if(this.fimDaFila==-1){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public void add(Object obj){
+		this.fimDaFila++;
+		this.elementos.add(obj);
+	}
+	public Object remove(){
+		if(!this.isEmpty()){
+		Object objAux = this.elementos.get(0);
+		this.elementos.remove(0);
+		this.fimDaFila--;
+		return objAux;
+		}else{
+			return null;
+		}
+	}
+		public Object peek(){
+			if(!this.isEmpty()){
+				return this.elementos.get(0);
+			}else{
+				return null;
+			}
+		}
+		public ArrayList<Object> getAll(){
+			if(!isEmpty()){
+				return this.elementos;
+			}else{
+				return null;
+			}
+			
+		}
+		public int getSize(){
+			int tamanho = 0;
+			for(Object o: elementos){
+				tamanho++;
+			}
+			return tamanho;
+		}
+}
