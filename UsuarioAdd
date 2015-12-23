@@ -1,0 +1,88 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
+
+public class UsuarioAdd extends JFrame{		// esssa é uma classe de tela para auxiliar o usuário a gerenciar e criar novas contas
+
+	private ArrayList<String> usuarios = new ArrayList();	// aqui temos que SUBSTITUIR <STRING> por <USUARIO> quando a classe estiver pronta
+	
+	private JPanel pnlPrincipal;
+	
+	private JButton bntAdd;	// cadastra as informações;
+	
+	private JLabel lblInstrucoes; // gera instruções para o usuário
+	
+	private JLabel lblNome;		// diz para o usuário digitar o nome
+	private JTextField txtNome;	// campo para digitar o nome
+	
+	private JLabel lblSenha;		// diz para o usuário digitar a idade
+	private JTextField txtSenha;	// campo para digitar a idade
+	
+	private JLabel lblSelect;		// diz para o usuário selecionar o sexo
+	private JRadioButton jmiSexoHomem;	// campo para dizer se é homem
+	private JRadioButton jmiSexoMulher; // campo para dizer se é mulher
+	private ButtonGroup btGrupo;
+	
+	public UsuarioAdd(){
+		
+		pnlPrincipal = new JPanel();
+		
+		pnlPrincipal.setBackground(Color.blue); // faz toda tela ficar azul, conforme requisito não funcional
+		
+		bntAdd = new JButton("ADICIONAR USUÁRIO");
+		
+		lblNome = new JLabel("Entre com um nome: ");
+		txtNome = new JTextField(10);
+		
+		lblSenha = new JLabel("Entre uma senha: ");
+		txtSenha = new JTextField(10);
+		
+		lblSelect = new JLabel("Selecione seu sexo: ");
+		jmiSexoHomem = new JRadioButton("MASCULINO");
+		jmiSexoMulher = new JRadioButton("FEMININO");
+		btGrupo = new ButtonGroup();
+		
+		btGrupo.add(jmiSexoHomem);
+		btGrupo.add(jmiSexoMulher);
+		
+		this.pnlPrincipal.setLayout(new FlowLayout());
+		
+		pnlPrincipal.add(lblNome);
+		pnlPrincipal.add(txtNome);
+		pnlPrincipal.add(lblSenha);
+		pnlPrincipal.add(txtSenha);
+		pnlPrincipal.add(jmiSexoHomem);
+		pnlPrincipal.add(jmiSexoMulher);
+		pnlPrincipal.add(bntAdd);
+		
+		bntAdd.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent evt){
+				  this.addUsuario(txtNome.getText(), txtSenha.getText());
+				  	JOptionPane.showMessageDialog(null, "ADICIONADO COM SUCESSO");
+			  }
+
+			private void addUsuario(String nome, String senha) {
+				usuarios.add(nome+"\t"+senha);
+			}
+		});
+	
+		
+		 this.add(pnlPrincipal);
+	}
+	
+}
