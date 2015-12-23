@@ -1,0 +1,243 @@
+
+
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+
+public class telaRestaurante extends JFrame{
+	
+	// ################### ATRIBUTOS DESTA TELA EM PARTICULAR #####################################
+
+	private JPanel pnlTela;		// tela principal
+	private JLabel lblBemVindo;		// boas vindas
+	private JLabel lblAddPedido;		// notofica aonde voçê deve inserir o pedido
+	private JTextField txtIDdoPedido;		// caixinha do id do pedido
+	private ArrayList<ArrayList> menu = new ArrayList();		// vou fazer aqui mesmo a lista de pedidos
+	private JLabel lblCheckMenu;		// mensagem de retorno com o id do pedido
+	private JButton bntMenu;		// botão que vai mostrar todos pratos ou itens
+	private JButton bntReservar;		// fazer a reserva de algum pedido
+	private JLabel lblReservado;		// mensagem que diz que ta feita a reserva
+	
+	// ################### ATRIBUTOS DA TELA PRINCIPAL COMPARTILHADOS #####################################	
+	
+	private JMenuBar jmbBarra;
+	private JMenu jMenu1;
+	private JMenuItem jmItem1;
+	private JMenuItem jmItem2;
+	private JMenuItem jmItem3;
+	private JMenuItem jmItem4;
+	
+	private JMenu jMenu11;
+	private JMenuItem jmItem11;
+	private JMenuItem jmItem12;
+	private JMenuItem jmItem13;
+	private JMenuItem jmItem14;
+	
+	//-----------------------------------------------------------------------------------------------------//
+	private ArrayList<String> saladas = new ArrayList();
+	
+	private String A001 = "R$01.00 alface CO: A001";
+	private String A002 = "R$01.00 repolho CO: A002";
+	private String A003 = "R$01.00 tomates CO: A003";
+	private String A004 = "R$01.00 pepidnos CO: A004";
+	private String A005 = "R$01.00 cebolas CO: A005";
+	private String A006 = "R$01.00 ovos em conserva CO: A006";
+	private String A007 = "R$01.00 ovos de codorna em conserva CO: A007";
+	
+	//-----------------------------------------------------------------------------------------------------//
+	
+	private ArrayList<String> pratos = new ArrayList();
+	
+	private String B001 = "R$18.00 Alá minuta: 'bife de gado com 2 óvos arroz e batatinha frita' CO: B001";
+	private String B002 = "R$25.00 Da casa: ' bife de picanha com aipim cozido e batatinhas a vapor' CO: B002";
+	private String B003 = "R$25.00 Vaca Atolada: 'carne de panela com molho sobre aipim e arroz' CO: B003";
+	private String B004 = "R$40.00 Churrasco: 'espeto corrido de picanha, alcatra, costelas bovinas e suinas, chuleta, chapéu de bispo e coxa e sobre coxa de frango' CO: B004";
+	
+	//-----------------------------------------------------------------------------------------------------//
+	
+	//-----------------------------------------------------------------------------------------------------//
+	
+		private ArrayList<String> bebidas = new ArrayList();
+		
+		private String C001 = "R$08.00 Pepsi, Coca Cola 2,5 litros CO: C001";
+		private String C002 = "R$20.00 Garrafa de vinho da casa CO: C002";
+		private String C003 = "R$06.00 Cervejas garrafa CO: C003";
+		private String C004 = "R$02.50 refrigerante lata CO: C004";
+		
+	//-----------------------------------------------------------------------------------------------------//
+	
+	public void menuCheck(){
+		for(int i = 1; i<8 ; i++){
+			saladas.add("A00"+i);
+		}
+		for(int i = 1; i<5 ; i++){
+			pratos.add("B00"+i);
+		}
+		for(int i = 1; i<5 ; i++){
+			bebidas.add("C00"+i);
+		}
+		menu.add(pratos);
+		menu.add(saladas);
+		menu.add(bebidas);
+		
+		this.getPratos();
+		this.getSaladas();
+		this.getBebidas();
+		
+			}
+	public String getPratos(){
+		String aux="";
+		for(String a: pratos){
+			System.out.println(a);
+			aux += "\n"+a;
+		}
+		return aux;
+	}
+	public String getSaladas(){
+		String aux="";
+		for(String a: saladas){
+			System.out.println(a);
+			aux += "\n"+a;
+		}
+		return aux;
+	}
+	public String getBebidas(){
+		String aux="";
+		for(String a: bebidas){
+			System.out.println(a);
+			aux += "\n"+a;
+		}
+		return aux;
+	}
+	
+	//##################################################################################################################
+	
+	public telaRestaurante(String nome, String senha){ // aqui precisa SER FEITO (String UsuárioCadastrado, String SenhaCadastrada){
+		// aqui mais tarde precisa ser feito um if(usuario & senha .equals()) pra comparar com usuarios e senhas cadastrados
+		pnlTela = new JPanel();
+		pnlTela.setBackground(Color.black);
+		pnlTela.setVisible(true);
+		pnlTela.setLayout(null);
+		
+	// -----------------------------------------------------------------------------------------------------------------------
+		
+		jmItem1 = new JMenuItem("adicionar usuário");
+		jmItem2 = new JMenuItem("remover usuário");
+		jmItem3 = new JMenuItem("checar usuários");
+		jmItem4 = new JMenuItem("adicionar moderador");
+	
+		jmItem1.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent evt){
+	                UsuarioAdd tf = new UsuarioAdd();
+	                tf.setVisible(true);
+	                tf.setSize(getMaximumSize());
+			  }
+		});
+		jmItem2.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent evt){
+	                UsuarioAdd tf = new UsuarioAdd();
+	                tf.setVisible(true);
+	                tf.setSize(getMaximumSize());
+			  }
+		});
+		jmItem3.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent evt){
+	                UsuarioAdd tf = new UsuarioAdd();
+	                tf.setVisible(true);
+	                tf.setSize(getMaximumSize());
+			  }
+		});
+		jmItem4.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent evt){
+	                UsuarioAdd tf = new UsuarioAdd();
+	                tf.setVisible(true);
+	                tf.setSize(getMaximumSize());
+			  }
+		});
+		
+		jmItem11 = new JMenuItem("checar pedidos");
+		jmItem12 = new JMenuItem("checar nº de mesas ocupadas");
+		jmItem13 = new JMenuItem("checar lucro do dia");
+		jmItem14 = new JMenuItem("checar vendas por garçons");
+		
+		jmItem11.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent evt){
+	                RestauranteGer tf2 = new RestauranteGer();
+	                tf2.setVisible(true);
+	                tf2.setSize(getMaximumSize());
+			  }
+		});
+		jmItem12.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent evt){
+	                UsuarioAdd tf = new UsuarioAdd();
+	                tf.setVisible(true);
+	                tf.setSize(getMaximumSize());
+			  }
+		});
+		jmItem13.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent evt){
+	                UsuarioAdd tf = new UsuarioAdd();
+	                tf.setVisible(true);
+	                tf.setSize(getMaximumSize());
+			  }
+		});
+		jmItem14.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent evt){
+	                UsuarioAdd tf = new UsuarioAdd();
+	                tf.setVisible(true);
+	                tf.setSize(getMaximumSize());
+			  }
+		});
+		
+	// ----------------------atributos erdados da telaPrincipal------------------------------------------------------
+		
+
+	    jMenu1 = new JMenu("configurações");
+	    jMenu1.setForeground(Color.black);
+	    jMenu1.add(jmItem1);
+	    jMenu1.add(jmItem2);
+	    jMenu1.add(jmItem3);
+	    jMenu1.add(jmItem4);
+	    
+	    
+	    
+	    jMenu11 = new JMenu("gerenciar restaurante");
+	    jMenu11.setForeground(Color.black);
+	    jMenu11.add(jmItem11);
+	    jMenu11.add(jmItem12);
+	    jMenu11.add(jmItem13);
+	    jMenu11.add(jmItem14);
+		
+		 jmbBarra = new JMenuBar();
+		    jmbBarra.add(jMenu1);
+		    jmbBarra.add(jMenu11);
+		    this.setJMenuBar(jmbBarra);
+		    jmbBarra.setBackground(Color.white);
+		    
+	// ------------------final de atributos erdados da telaPrincipal -----------------------------------------------	
+		    
+		    		lblBemVindo = new JLabel("Você está logado");
+		    		pnlTela.add(lblBemVindo);
+		    		lblBemVindo.setForeground(Color.white);
+		    		lblBemVindo.setBounds(20, 10, 200, 30);
+		    
+		    		lblAddPedido = new JLabel("ID (pedido(s))");
+		    		pnlTela.add(lblAddPedido);
+		    		lblAddPedido.setForeground(Color.white);
+		    		lblAddPedido.setBounds(70, 60, 200, 30);
+		    		
+		    		
+		add(pnlTela);
+	}
+}
