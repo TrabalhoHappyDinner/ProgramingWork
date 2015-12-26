@@ -1,0 +1,37 @@
+import java.awt.Component;
+import java.util.HashMap;
+
+
+public class Prato {
+
+	private HashMap pratos = new HashMap();
+	private int id;
+	private String descricao;
+	private	String prato; 	// retorna uma string para a classe mesa
+	private double preco;	
+	
+		public Prato(int id, String descrição, double preço){
+			this.id = id;
+			this.descricao = descrição;
+			this.preco = preço;
+			}
+		public int getId(){
+			return this.id;
+		}
+		public double getPreco(){
+			return this.preco;
+		}
+		public String getdescricao(){
+			return this.descricao;
+		}
+		public void addOnHashMap(){
+			pratos.put(this.id, this.descricao);
+		}
+		
+		public String getPratos(int COD){
+			for(Object chave: pratos.keySet()){
+					String prato = (String) pratos.get(chave);
+}
+			return prato;
+}
+}
