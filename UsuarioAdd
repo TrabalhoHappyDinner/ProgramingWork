@@ -72,17 +72,30 @@ public class UsuarioAdd extends JFrame{		// esssa é uma classe de tela para aux
 		
 		bntAdd.addActionListener(new ActionListener(){
 			  public void actionPerformed(ActionEvent evt){
-				  this.addUsuario(txtNome.getText(), txtSenha.getText());
+				  this.addUsuario(txtNome.getText(), txtSenha.getText(), rootPaneCheckingEnabled);
+				  usuarios.add(txtNome.getText());
 				  	JOptionPane.showMessageDialog(null, "ADICIONADO COM SUCESSO");
-			  }
+				}
 
-			private void addUsuario(String nome, String senha) {
-				usuarios.add(nome+"\t"+senha);
+			private void addUsuario(String nome, String senha, boolean check) {
+				if(jmiSexoHomem.isSelected()){
+					check = true;
+				}else{
+					check = false;
+				}
+				usuarios.add(nome+"\t"+senha+"\t"+check);
 			}
-		});
-	
-		
+		});	
 		 this.add(pnlPrincipal);
 	}
-	
+			public String getNºUsuario(){
+				for(String x: usuarios){
+					if(usuarios!=null){
+					return this.getName();
+				}else{
+				return "Não há usuários";	
+				}
+			}
+				return null;
+		}
 }
