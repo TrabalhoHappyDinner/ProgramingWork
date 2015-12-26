@@ -1,0 +1,70 @@
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+
+public class Mesa extends JFrame{
+	private int numero;
+	//	private Pessoas NºdePessoas;  fazer  a classe pessoa ou similar
+ 	private JPanel pnlPrincipal;
+ 	private double contaAPagar;
+ 	
+	private JCheckBox checkMenu;
+	private JCheckBox checkMenu1;
+	private JCheckBox checkMenu2;
+	private JCheckBox checkMenu3;
+	private JCheckBox checkMenu4;
+	private JCheckBox checkMenu5;
+	
+	public Mesa(){
+		
+		pnlPrincipal = new JPanel();
+		pnlPrincipal.setBackground(Color.blue);
+		pnlPrincipal.setVisible(true);
+		
+		Prato x = new Prato(001, "prato da casa: este prato contêm carne de panela arroz, feijão, saladas, aipim e molho madera", 32.25);
+		x.addOnHashMap();
+		Prato x1 = new Prato(001, "prato da casa: este prato contêm carne de panela arroz, feijão, saladas, aipim e molho madera", 32.25);
+		x1.addOnHashMap();
+		Prato x2 = new Prato(001, "prato da casa: este prato contêm carne de panela arroz, feijão, saladas, aipim e molho madera", 32.25);
+		x2.addOnHashMap();
+		Prato x3 = new Prato(001, "prato da casa: este prato contêm carne de panela arroz, feijão, saladas, aipim e molho madera", 32.25);
+		x3.addOnHashMap();
+		Prato x4 = new Prato(001, "prato da casa: este prato contêm carne de panela arroz, feijão, saladas, aipim e molho madera", 32.25);
+		
+					checkMenu = new JCheckBox(x.getdescricao());
+					pnlPrincipal.add(checkMenu);
+					if(checkMenu.isSelected()){
+						this.contaAPagar =+ x.getPreco(); 	
+					}
+					checkMenu1 = new JCheckBox(x1.getdescricao());
+					pnlPrincipal.add(checkMenu1);
+					if(checkMenu.isSelected()){
+						this.contaAPagar =+ x1.getPreco(); 	
+					}
+					checkMenu2 = new JCheckBox(x2.getdescricao());
+					pnlPrincipal.add(checkMenu2);
+					if(checkMenu.isSelected()){
+						this.contaAPagar =+ x2.getPreco(); 	
+					}
+					checkMenu3 = new JCheckBox(x3.getdescricao());
+					pnlPrincipal.add(checkMenu3);
+					if(checkMenu.isSelected()){
+						this.contaAPagar =+ x3.getPreco(); 	
+					}
+					checkMenu4 = new JCheckBox(x4.getdescricao());
+					pnlPrincipal.add(checkMenu4);
+					if(checkMenu.isSelected()){
+						this.contaAPagar =+ x4.getPreco(); 	
+					}
+		
+		add(pnlPrincipal);
+	}
+					public double getContaAPagar(){
+						return this.contaAPagar;
+	}
+}
