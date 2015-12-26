@@ -1,11 +1,15 @@
 
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -18,16 +22,24 @@ import javax.swing.JTextField;
 public class telaRestaurante extends JFrame{
 	
 	// ################### ATRIBUTOS DESTA TELA EM PARTICULAR #####################################
-
+	
+	private JPanel pnlLestTela;
+	private JPanel pnlWestTela;
+	private JPanel pnlSouthTela;
+	private JPanel pnlNorthTela;
+	private JPanel pnlGTela;	// Grid dos botões
 	private JPanel pnlTela;		// tela principal
+	private JPanel pnlMineMenu; // aparece um pequeno menu de seleção
+	
 	private JLabel lblBemVindo;		// boas vindas
-	private JLabel lblAddPedido;		// notofica aonde voçê deve inserir o pedido
+
 	private JTextField txtIDdoPedido;		// caixinha do id do pedido
-	private ArrayList<ArrayList> menu = new ArrayList();		// vou fazer aqui mesmo a lista de pedidos
 	private JLabel lblCheckMenu;		// mensagem de retorno com o id do pedido
 	private JButton bntMenu;		// botão que vai mostrar todos pratos ou itens
 	private JButton bntReservar;		// fazer a reserva de algum pedido
 	private JLabel lblReservado;		// mensagem que diz que ta feita a reserva
+
+	private JButton bntMesa;
 	
 	// ################### ATRIBUTOS DA TELA PRINCIPAL COMPARTILHADOS #####################################	
 	
@@ -44,91 +56,43 @@ public class telaRestaurante extends JFrame{
 	private JMenuItem jmItem13;
 	private JMenuItem jmItem14;
 	
-	//-----------------------------------------------------------------------------------------------------//
-	private ArrayList<String> saladas = new ArrayList();
-	
-	private String A001 = "R$01.00 alface CO: A001";
-	private String A002 = "R$01.00 repolho CO: A002";
-	private String A003 = "R$01.00 tomates CO: A003";
-	private String A004 = "R$01.00 pepidnos CO: A004";
-	private String A005 = "R$01.00 cebolas CO: A005";
-	private String A006 = "R$01.00 ovos em conserva CO: A006";
-	private String A007 = "R$01.00 ovos de codorna em conserva CO: A007";
-	
-	//-----------------------------------------------------------------------------------------------------//
-	
-	private ArrayList<String> pratos = new ArrayList();
-	
-	private String B001 = "R$18.00 Alá minuta: 'bife de gado com 2 óvos arroz e batatinha frita' CO: B001";
-	private String B002 = "R$25.00 Da casa: ' bife de picanha com aipim cozido e batatinhas a vapor' CO: B002";
-	private String B003 = "R$25.00 Vaca Atolada: 'carne de panela com molho sobre aipim e arroz' CO: B003";
-	private String B004 = "R$40.00 Churrasco: 'espeto corrido de picanha, alcatra, costelas bovinas e suinas, chuleta, chapéu de bispo e coxa e sobre coxa de frango' CO: B004";
-	
-	//-----------------------------------------------------------------------------------------------------//
-	
-	//-----------------------------------------------------------------------------------------------------//
-	
-		private ArrayList<String> bebidas = new ArrayList();
-		
-		private String C001 = "R$08.00 Pepsi, Coca Cola 2,5 litros CO: C001";
-		private String C002 = "R$20.00 Garrafa de vinho da casa CO: C002";
-		private String C003 = "R$06.00 Cervejas garrafa CO: C003";
-		private String C004 = "R$02.50 refrigerante lata CO: C004";
-		
-	//-----------------------------------------------------------------------------------------------------//
-	
-	public void menuCheck(){
-		for(int i = 1; i<8 ; i++){
-			saladas.add("A00"+i);
-		}
-		for(int i = 1; i<5 ; i++){
-			pratos.add("B00"+i);
-		}
-		for(int i = 1; i<5 ; i++){
-			bebidas.add("C00"+i);
-		}
-		menu.add(pratos);
-		menu.add(saladas);
-		menu.add(bebidas);
-		
-		this.getPratos();
-		this.getSaladas();
-		this.getBebidas();
-		
-			}
-	public String getPratos(){
-		String aux="";
-		for(String a: pratos){
-			System.out.println(a);
-			aux += "\n"+a;
-		}
-		return aux;
-	}
-	public String getSaladas(){
-		String aux="";
-		for(String a: saladas){
-			System.out.println(a);
-			aux += "\n"+a;
-		}
-		return aux;
-	}
-	public String getBebidas(){
-		String aux="";
-		for(String a: bebidas){
-			System.out.println(a);
-			aux += "\n"+a;
-		}
-		return aux;
-	}
 	
 	//##################################################################################################################
 	
 	public telaRestaurante(String nome, String senha){ // aqui precisa SER FEITO (String UsuárioCadastrado, String SenhaCadastrada){
 		// aqui mais tarde precisa ser feito um if(usuario & senha .equals()) pra comparar com usuarios e senhas cadastrados
+		
 		pnlTela = new JPanel();
 		pnlTela.setBackground(Color.black);
 		pnlTela.setVisible(true);
-		pnlTela.setLayout(null);
+		pnlTela.setLayout(new BorderLayout());
+		
+		pnlNorthTela = new JPanel();
+		pnlNorthTela.setBackground(Color.gray);
+		pnlNorthTela.setVisible(true);
+		
+		pnlSouthTela = new JPanel();
+		pnlSouthTela.setBackground(Color.gray);
+		pnlSouthTela.setVisible(true);
+		
+		pnlGTela = new JPanel();
+		pnlGTela.setBackground(Color.gray);
+		pnlGTela.setVisible(true);
+		pnlGTela.setLayout(new GridLayout(4, 5));
+		
+		pnlWestTela = new JPanel();
+		pnlWestTela.setBackground(Color.gray);
+		pnlWestTela.setVisible(true);
+		
+		pnlLestTela = new JPanel();
+		pnlLestTela.setBackground(Color.gray);
+		pnlLestTela.setVisible(true);
+		
+		pnlTela.add(pnlWestTela, BorderLayout.WEST);
+		pnlTela.add(pnlGTela ,BorderLayout.CENTER);
+		pnlTela.add(pnlSouthTela, BorderLayout.SOUTH);
+		pnlTela.add(pnlNorthTela, BorderLayout.NORTH);
+		pnlTela.add(pnlLestTela, BorderLayout.EAST);
 		
 	// -----------------------------------------------------------------------------------------------------------------------
 		
@@ -228,15 +192,22 @@ public class telaRestaurante extends JFrame{
 	// ------------------final de atributos erdados da telaPrincipal -----------------------------------------------	
 		    
 		    		lblBemVindo = new JLabel("Você está logado");
-		    		pnlTela.add(lblBemVindo);
+		    		pnlNorthTela.add(lblBemVindo);
 		    		lblBemVindo.setForeground(Color.white);
 		    		lblBemVindo.setBounds(20, 10, 200, 30);
-		    
-		    		lblAddPedido = new JLabel("ID (pedido(s))");
-		    		pnlTela.add(lblAddPedido);
-		    		lblAddPedido.setForeground(Color.white);
-		    		lblAddPedido.setBounds(70, 60, 200, 30);
 		    		
+		    		for(int i = 1; i<=20; i++){		// fazendo as mesas e adicionando a tela();
+		    			bntMesa = new JButton("MESA "+i);
+		    			bntMesa.setBackground(Color.GREEN);
+		    			pnlGTela.add(bntMesa);
+		    			bntMesa.addActionListener(new ActionListener(){
+				  			  public void actionPerformed(ActionEvent evt){
+				  				  Mesa tf = new Mesa();
+				  	                tf.setVisible(true);
+				  	                tf.setSize(600, 600);
+				  			  }
+				  		});
+		    		}
 		    		
 		add(pnlTela);
 	}
